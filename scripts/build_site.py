@@ -48,12 +48,13 @@ def main():
     drop = cfg.get("drop_alert_percent", 5)
     now_s = dt.datetime.now(JST).strftime("%Y-%m-%d %H:%M")
     names = {w["id"]: w["name"] for w in cfg["watch"]}
+    cfg_approved = {w["id"]: w.get("approved", False) for w in cfg["watch"]}  # items.jsonでの承認
 
     rows, events, pending = [], [], []
     for wid, t in tracked.items():
         if wid not in latest:
             continue
-        if not t.get("approved"):
+        if not (t.get("approved") or cfg_approved.get(wid)):
             pending.append((wid, t["itemName"], latest[wid]["price"]))
             continue
         now, prev, prices, tags = analyze(wid, hist[wid], drop)
@@ -127,7 +128,7 @@ footer{{margin-top:28px;color:var(--mute);font-size:.8rem}}
         r += [f"- {n}: {yen(now)}（{'、'.join(tags)}）" for _, n, _, now, _, tags in events]
         r.append("")
     if pending:
-        r.append("### 承認待ちの候補（data/tracked.json で approved を true にすると公開されます）")
+        r.append("### 承認待ちの候補（config/items.json の該当商品に \"approved\": true を足すと公開されます）")
         r += [f"- {wid}: {n[:50]} / {yen(p)}" for wid, n, p in pending]
         r.append("")
     r += ["### 未対応", "- クリック数・確定報酬は未接続です（次のステップで追加）。"]

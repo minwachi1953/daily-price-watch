@@ -99,7 +99,8 @@ def pick_candidate(w, cfg):
           if i.get("itemPrice", 0) >= w.get("min_price", 0)
           and i.get("reviewCount", 0) >= cfg["min_reviews"]
           and float(i.get("reviewAverage", 0)) >= cfg["min_review_average"]]
-    return min(ok, key=lambda i: i["itemPrice"]) if ok else None
+    # 安さではなく「定番」(レビュー件数が最多)を選ぶ。同数なら安い方。
+    return max(ok, key=lambda i: (i.get("reviewCount", 0), -i["itemPrice"])) if ok else None
 
 
 def main():
@@ -113,11 +114,23 @@ def main():
     missing = []
     for w in cfg["watch"]:
         wid = w["id"]
-        if wid not in tracked:  # 初回: 候補を1件選んで固定(未承認)
+        rec = tracked.get(wid)
+        if rec is None:
+            changed = False
+        elif "keyword" in rec:
+            changed = rec["keyword"] != w["keyword"]
+        else:  # 検索語が未記録の旧データ: 承認済みなら据え置き、未承認なら選び直す
+            changed = not w.get("approved")
+            if not changed:
+                rec["keyword"] = w["keyword"]
+        if rec is None or changed:  # 初回または検索語の変更時: 候補を1件選んで固定
             c = pick_candidate(w, cfg)
             if not c:
                 print(f"{wid}: 取得失敗" if ERRORS else f"{wid}: 条件に合う商品なし"); continue
-            tracked[wid] = {"itemCode": c["itemCode"], "itemName": c["itemName"], "approved": False}
+            tracked[wid] = {"itemCode": c["itemCode"], "itemName": c["itemName"],
+                            "keyword": w["keyword"], "approved": False}
+            if changed:
+                history[wid] = []  # 別商品になるので履歴は引き継がない
             print(f"{wid}: 候補を選定 -> {c['itemName'][:40]}")
             items = [c]
         else:
