@@ -1,12 +1,12 @@
 {
-  "_comment": "監視する商品の条件です。keywordで検索し、条件に合う最安の1件を候補にします。候補は data/tracked.json で approved を true にするまで公開されません。",
+  "_comment": "keywordで検索し、定番(レビュー件数が最多)の1件を候補にします。承認(approved: true)するまで公開されません。keywordを変えると自動で選び直します(その場合はapprovedをfalseに戻してください)。",
   "watch": [
-    {"id": "tissue",   "name": "ティッシュペーパー 5箱パック",   "keyword": "ティッシュペーパー 5箱 200組", "min_price": 300},
-    {"id": "water",    "name": "ミネラルウォーター 2L×6本",      "keyword": "ミネラルウォーター 2L 6本",     "min_price": 400},
-    {"id": "toilet",   "name": "トイレットペーパー 12ロール",    "keyword": "トイレットペーパー 12ロール",   "min_price": 400},
-    {"id": "protein",  "name": "ホエイプロテイン 1kg",           "keyword": "ホエイプロテイン 1kg",          "min_price": 2000},
-    {"id": "diaper",   "name": "おむつ テープ Mサイズ",          "keyword": "おむつ テープ M",               "min_price": 1500},
-    {"id": "catfood",  "name": "キャットフード ドライ 1kg以上",  "keyword": "キャットフード ドライ 1kg",     "min_price": 800}
+    {"id": "tissue",   "name": "ティッシュペーパー 5箱パック",   "keyword": "ティッシュペーパー 5箱 200組", "min_price": 300,  "approved": true},
+    {"id": "water",    "name": "ミネラルウォーター 2L×6本",      "keyword": "ミネラルウォーター 2L 6本",     "min_price": 400,  "approved": true},
+    {"id": "toilet",   "name": "トイレットペーパー 12ロール",    "keyword": "トイレットペーパー 12ロール",   "min_price": 400,  "approved": true},
+    {"id": "protein",  "name": "ホエイプロテイン 1kg",           "keyword": "ホエイ プロテイン 1kg",         "min_price": 2000, "approved": false},
+    {"id": "diaper",   "name": "おむつ テープタイプ Mサイズ",    "keyword": "おむつ テープタイプ Mサイズ",   "min_price": 1500, "approved": false},
+    {"id": "catfood",  "name": "キャットフード ドライ 1kg以上",  "keyword": "キャットフード ドライ 1kg 総合栄養食", "min_price": 800, "approved": false}
   ],
   "min_reviews": 20,
   "min_review_average": 4.0,
