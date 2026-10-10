@@ -1,0 +1,35 @@
+name: daily
+on:
+  schedule:
+    - cron: "0 22 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch prices
+        run: python scripts/fetch_prices.py
+        env:
+          RAKUTEN_APP_ID: ${{ secrets.RAKUTEN_APP_ID }}
+          RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
+          RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
+          SITE_URL: https://minwachi1953.github.io/daily-price-watch/
+      - name: Build site and report
+        run: python scripts/build_site.py
+      - name: Commit changes
+        run: |
+          git config user.name "price-bot"
+          git config user.email "price-bot@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || (git commit -m "daily update $(date +%F)" && git push)
+      - name: Send daily report as Issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "日次レポート $(TZ=Asia/Tokyo date +%F)" --body-file reports/latest.md
