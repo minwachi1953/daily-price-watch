@@ -12,6 +12,7 @@ jobs:
       - name: Create weekly checklist issue
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           cat > body.md <<'BODY'
           ## 今週の振り返り(約10分)
