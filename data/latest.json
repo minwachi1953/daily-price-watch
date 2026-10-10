@@ -1,1 +1,52 @@
-{}
+{
+ "tissue": {
+  "itemName": "クレシア スコッティ ティッシュ 200組 5箱",
+  "price": 528,
+  "shop": "ココデカウ",
+  "url": "https://hb.afl.rakuten.co.jp/hgc/g00qq8to.ivutk5d0.g00qq8to.ivutl883/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fcocodecow%2F910281%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fcocodecow%2Fi%2F10092499%2F&rafcid=wsc_i_is_35bfcee4-c903-4758-b379-2f7b7502a668",
+  "pointRate": 1,
+  "reviewAverage": 4.82,
+  "reviewCount": 22,
+  "fetchedAt": "2026-10-11 06:00"
+ },
+ "water": {
+  "itemName": "【6本】伊藤園　磨かれて、澄みきった日本の水　2L　備蓄水　ペットボトル　1ケース（6本）",
+  "price": 959,
+  "shop": "ぱーそなるたのめーる",
+  "url": "https://hb.afl.rakuten.co.jp/hgc/g00qpdqo.ivutk8c9.g00qpdqo.ivutle62/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fp-tano%2F761-2817%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fp-tano%2Fi%2F10257683%2F&rafcid=wsc_i_is_35bfcee4-c903-4758-b379-2f7b7502a668",
+  "pointRate": 10,
+  "reviewAverage": 4.65,
+  "reviewCount": 107,
+  "fetchedAt": "2026-10-11 06:00"
+ },
+ "toilet": {
+  "itemName": "スコッティ フラワーパック 2倍長持ち トイレットペーパー ダブル(50m×12ロール)【スコッティ(SCOTTIE)】[トイレットペーパー]",
+  "price": 1362,
+  "shop": "楽天24",
+  "url": "https://hb.afl.rakuten.co.jp/hgc/g00r136o.ivutk354.g00r136o.ivutl1c1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Frakuten24%2Fx255570h%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Frakuten24%2Fi%2F10205904%2F&rafcid=wsc_i_is_35bfcee4-c903-4758-b379-2f7b7502a668",
+  "pointRate": 1,
+  "reviewAverage": 4.64,
+  "reviewCount": 171,
+  "fetchedAt": "2026-10-11 06:00"
+ },
+ "protein": {
+  "itemName": "SAVE カゼイン&ホエイ ( 1kg / 3kg / 5kg ) カゼイン & ホエイ プロテイン プレーン ノンフレーバー 無添加 スロープロテイン 【レビューを書くと300円 クーポン 配布】",
+  "price": 3380,
+  "shop": "シープウィング",
+  "url": "https://hb.afl.rakuten.co.jp/hgc/g00rh49o.ivutk625.g00rh49o.ivutl287/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-sheepwing%2Fsave-casein%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fauc-sheepwing%2Fi%2F10002290%2F&rafcid=wsc_i_is_35bfcee4-c903-4758-b379-2f7b7502a668",
+  "pointRate": 1,
+  "reviewAverage": 4.46,
+  "reviewCount": 90,
+  "fetchedAt": "2026-10-11 06:00"
+ },
+ "catfood": {
+  "itemName": "【月間優良ショップ8回受賞】【クーポン有】 ブリスミックス猫 1kg pHコントロール グレインフリーチキン キャットフード 安全 無添加 食物アレルギー対応 皮膚健康 泌尿器系サポート 高品質たんぱく質 安全フード わんぱく ドライフード 他お試しフードサンプル有 ALE",
+  "price": 3630,
+  "shop": "わんぱく 猫犬用品専門店",
+  "url": "https://hb.afl.rakuten.co.jp/hgc/g00qvxao.ivutk2b2.g00qvxao.ivutlef0/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fwanpaku-izukougen%2Fblcph1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fwanpaku-izukougen%2Fi%2F10008352%2F&rafcid=wsc_i_is_35bfcee4-c903-4758-b379-2f7b7502a668",
+  "pointRate": 5,
+  "reviewAverage": 4.41,
+  "reviewCount": 66,
+  "fetchedAt": "2026-10-11 06:00"
+ }
+}

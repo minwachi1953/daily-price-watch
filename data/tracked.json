@@ -1,1 +1,27 @@
-{}
+{
+ "tissue": {
+  "itemCode": "cocodecow:10092499",
+  "itemName": "クレシア スコッティ ティッシュ 200組 5箱",
+  "approved": false
+ },
+ "water": {
+  "itemCode": "p-tano:10257683",
+  "itemName": "【6本】伊藤園　磨かれて、澄みきった日本の水　2L　備蓄水　ペットボトル　1ケース（6本）",
+  "approved": false
+ },
+ "toilet": {
+  "itemCode": "rakuten24:10205904",
+  "itemName": "スコッティ フラワーパック 2倍長持ち トイレットペーパー ダブル(50m×12ロール)【スコッティ(SCOTTIE)】[トイレットペーパー]",
+  "approved": false
+ },
+ "protein": {
+  "itemCode": "auc-sheepwing:10002290",
+  "itemName": "SAVE カゼイン&ホエイ ( 1kg / 3kg / 5kg ) カゼイン & ホエイ プロテイン プレーン ノンフレーバー 無添加 スロープロテイン 【レビューを書くと300円 クーポン 配布】",
+  "approved": false
+ },
+ "catfood": {
+  "itemCode": "wanpaku-izukougen:10008352",
+  "itemName": "【月間優良ショップ8回受賞】【クーポン有】 ブリスミックス猫 1kg pHコントロール グレインフリーチキン キャットフード 安全 無添加 食物アレルギー対応 皮膚健康 泌尿器系サポート 高品質たんぱく質 安全フード わんぱく ドライフード 他お試しフードサンプル有 ALE",
+  "approved": false
+ }
+}
