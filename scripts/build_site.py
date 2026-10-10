@@ -112,7 +112,14 @@ footer{{margin-top:28px;color:var(--mute);font-size:.8rem}}
     (ROOT / "index.html").write_text(page, encoding="utf-8")
 
     # ---- 日次レポート(GitHub Issueとして届く) ----
-    r = [f"## 日次レポート {now_s}", "",
+    st = load("data/status.json", {"errors": [], "unavailable": []})
+    r = [f"## 日次レポート {now_s}", ""]
+    if st["errors"]:
+        r += ["### ⚠ 価格を取得できませんでした", *[f"- {e}" for e in st["errors"]],
+              "- 公開ページは前回までのデータのままです。ログ(Actions → Fetch prices)を確認してください。", ""]
+    if st["unavailable"]:
+        r += [f"- 在庫なし・販売終了の可能性: {', '.join(st['unavailable'])}", ""]
+    r += [
          f"- 公開中の商品: {len(rows)}件 / 承認待ち: {len(pending)}件",
          f"- 値下がり・最安検知: {len(events)}件", ""]
     if events:

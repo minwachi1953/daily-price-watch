@@ -3,8 +3,7 @@
 環境変数:
   RAKUTEN_APP_ID / RAKUTEN_ACCESS_KEY / RAKUTEN_AFFILIATE_ID  (GitHub Secrets)
   SITE_URL       楽天アプリに登録したURL (Refererとして送る)
-  RAKUTEN_ENDPOINT  省略時は下の既定値。20220601版は2027-01-18廃止予定。
-                    20260401版へ移行するときはここだけ変える(仕様差は要確認)。
+  RAKUTEN_ENDPOINT  省略時は新しい版から順に試す。指定すればその1つだけを使う。
 使い方:
   python scripts/fetch_prices.py          # 本番
   python scripts/fetch_prices.py --mock   # 通信せずテスト用データで動作確認
@@ -15,9 +14,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 JST = dt.timezone(dt.timedelta(hours=9))
-ENDPOINT = os.environ.get(
-    "RAKUTEN_ENDPOINT",
-    "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20220601")
+BASE = "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/"
+# 旧版 20220601 は提供終了済み(400 "API Configuration not found")。新しい版から順に試す。
+ENDPOINTS = ([os.environ["RAKUTEN_ENDPOINT"]] if os.environ.get("RAKUTEN_ENDPOINT")
+             else [BASE + "20260701", BASE + "20260401"])
+ERRORS = []  # 今回の実行で起きたエラー(キー等は含めない)
 MOCK = "--mock" in sys.argv
 
 
@@ -33,6 +34,7 @@ def save(path, obj):
 
 
 def call_api(extra):
+    """成功すれば商品リスト(0件なら[])、失敗すれば None を返す。"""
     if MOCK:
         return mock_items(extra)
     site = os.environ["SITE_URL"]
@@ -44,18 +46,35 @@ def call_api(extra):
     if os.environ.get("RAKUTEN_AFFILIATE_ID"):
         params["affiliateId"] = os.environ["RAKUTEN_AFFILIATE_ID"]
     params.update(extra)
-    url = ENDPOINT + "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(url, headers={"Referer": site, "Origin": site.rstrip("/")})
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            data = json.loads(r.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        # キー類がログに出ないよう、URLは出さない
-        print(f"  API error {e.code}: {e.read().decode('utf-8', 'ignore')[:300]}")
-        return []
-    time.sleep(1.1)  # 連続アクセスの制限対策
-    items = data.get("Items") or data.get("items") or []
-    return [i.get("Item", i) for i in items]  # formatVersion差を吸収
+    query = "?" + urllib.parse.urlencode(params)
+    headers = {"Referer": site, "Origin": site.rstrip("/")}
+
+    for ep in list(ENDPOINTS):
+        for attempt in range(4):
+            time.sleep(1.2)  # 連続アクセスの制限対策(1秒に1回程度)
+            try:
+                with urllib.request.urlopen(urllib.request.Request(ep + query, headers=headers), timeout=30) as r:
+                    data = json.loads(r.read().decode("utf-8"))
+                if ep != ENDPOINTS[0]:
+                    ENDPOINTS.remove(ep); ENDPOINTS.insert(0, ep)  # 動いた版を優先
+                items = data.get("Items") or data.get("items") or []
+                return [i.get("Item", i) for i in items]  # formatVersion差を吸収
+            except urllib.error.HTTPError as e:
+                body = e.read().decode("utf-8", "ignore")[:200]
+                if e.code == 429:  # 回数制限: 待って再試行
+                    time.sleep(3 * (attempt + 1)); continue
+                if e.code == 400 and "API Configuration not found" in body:
+                    print(f"  この版は使えません: {ep.rsplit('/', 1)[-1]}"); break  # 次の版へ
+                # URLはキーを含むので出力しない
+                ERRORS.append(f"HTTP {e.code}: {body}")
+                print(f"  API error {e.code}: {body}")
+                return None
+            except Exception as e:  # 通信失敗など
+                ERRORS.append(f"{type(e).__name__}")
+                print(f"  通信エラー: {type(e).__name__}")
+                return None
+    ERRORS.append("利用できるAPIバージョンが見つかりません")
+    return None
 
 
 def mock_items(extra):
@@ -74,6 +93,8 @@ def mock_items(extra):
 
 def pick_candidate(w, cfg):
     items = call_api({"keyword": w["keyword"], "hits": 30, "sort": "standard"})
+    if items is None:
+        return None
     ok = [i for i in items
           if i.get("itemPrice", 0) >= w.get("min_price", 0)
           and i.get("reviewCount", 0) >= cfg["min_reviews"]
@@ -89,19 +110,23 @@ def main():
     day = os.environ.get("FORCE_DATE") or dt.datetime.now(JST).strftime("%Y-%m-%d")
     now = f"{day} " + dt.datetime.now(JST).strftime("%H:%M")
 
+    missing = []
     for w in cfg["watch"]:
         wid = w["id"]
         if wid not in tracked:  # 初回: 候補を1件選んで固定(未承認)
             c = pick_candidate(w, cfg)
             if not c:
-                print(f"{wid}: 条件に合う商品なし"); continue
+                print(f"{wid}: 取得失敗" if ERRORS else f"{wid}: 条件に合う商品なし"); continue
             tracked[wid] = {"itemCode": c["itemCode"], "itemName": c["itemName"], "approved": False}
             print(f"{wid}: 候補を選定 -> {c['itemName'][:40]}")
             items = [c]
         else:
             items = call_api({"itemCode": tracked[wid]["itemCode"], "hits": 1})
         if not items:
-            print(f"{wid}: 取得できず(在庫なし/終了の可能性)"); continue
+            print(f"{wid}: 取得できず(在庫なし/終了の可能性)")
+            if items is not None:
+                missing.append(wid)
+            continue
         i = items[0]
         latest[wid] = {
             "itemName": i["itemName"], "price": i["itemPrice"], "shop": i.get("shopName", ""),
@@ -116,6 +141,9 @@ def main():
     save("data/tracked.json", tracked)
     save("data/history.json", history)
     save("data/latest.json", latest)
+    # 取得エラーはレポートで警告するため記録する
+    save("data/status.json", {"date": day, "errors": sorted(set(ERRORS)), "unavailable": missing})
+    print(f"取得エラー: {len(ERRORS)}件")
 
 
 if __name__ == "__main__":
