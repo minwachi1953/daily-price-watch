@@ -1,0 +1,35 @@
+name: weekly-reminder
+on:
+  schedule:
+    - cron: "0 11 * * 0"   # 毎週日曜 20:00(日本時間)
+  workflow_dispatch:        # 手動実行ボタン(テスト用)
+permissions:
+  issues: write
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create weekly checklist issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > body.md <<'BODY'
+          ## 今週の振り返り(約10分)
+
+          - [ ] **1. 楽天アフィリエイトのCSVをダウンロード**(パソコンで)
+            - 楽天アフィリエイト → レポート → 「期間別成果」 → 今月分のCSVをダウンロード
+            - 画面の名前や場所は変わることがあります。見つからなければスクリーンショットを送ってください
+          - [ ] **2. Threadsのインサイトを確認**
+            - プロフィール → インサイト(表示は変わることがあります)
+            - 今週の投稿ごとの閲覧数・いいね・返信と、フォロワー数をメモかスクリーンショットで残す
+          - [ ] **3. 今週投稿した内容をメモ**(日付と、どの型の投稿だったか)
+          - [ ] **4. 1〜3をClaudeのチャットに貼る**
+            - CSVはそのままアップロードして大丈夫です
+            - ID・キー・個人情報が入っていないかだけ確認してください
+
+          ## 見るポイント
+          - クリック数は増えたか(先週との差)
+          - 閲覧数が多かった投稿はどの型だったか
+          - 来週、増やす型と減らす型は何か
+          BODY
+          gh issue create --title "週次チェック $(TZ=Asia/Tokyo date +%F)" --body-file body.md
