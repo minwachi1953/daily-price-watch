@@ -1,7 +1,5 @@
 {
  "date": "2026-10-11",
- "errors": [
-  "HTTP 400: {\"error_description\":\"keyword is not valid\",\"error\":\"wrong_parameter\"}"
- ],
+ "errors": [],
  "unavailable": []
 }

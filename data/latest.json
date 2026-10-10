@@ -7,7 +7,7 @@
   "pointRate": 1,
   "reviewAverage": 4.82,
   "reviewCount": 22,
-  "fetchedAt": "2026-10-11 06:00"
+  "fetchedAt": "2026-10-11 06:24"
  },
  "water": {
   "itemName": "【6本】伊藤園　磨かれて、澄みきった日本の水　2L　備蓄水　ペットボトル　1ケース（6本）",
@@ -17,7 +17,7 @@
   "pointRate": 10,
   "reviewAverage": 4.65,
   "reviewCount": 107,
-  "fetchedAt": "2026-10-11 06:00"
+  "fetchedAt": "2026-10-11 06:24"
  },
  "toilet": {
   "itemName": "スコッティ フラワーパック 2倍長持ち トイレットペーパー ダブル(50m×12ロール)【スコッティ(SCOTTIE)】[トイレットペーパー]",
@@ -27,26 +27,36 @@
   "pointRate": 1,
   "reviewAverage": 4.64,
   "reviewCount": 171,
-  "fetchedAt": "2026-10-11 06:00"
+  "fetchedAt": "2026-10-11 06:24"
  },
  "protein": {
-  "itemName": "SAVE カゼイン&ホエイ ( 1kg / 3kg / 5kg ) カゼイン & ホエイ プロテイン プレーン ノンフレーバー 無添加 スロープロテイン 【レビューを書くと300円 クーポン 配布】",
-  "price": 3380,
-  "shop": "シープウィング",
-  "url": "https://hb.afl.rakuten.co.jp/hgc/g00rh49o.ivutk625.g00rh49o.ivutl287/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-sheepwing%2Fsave-casein%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fauc-sheepwing%2Fi%2F10002290%2F&rafcid=wsc_i_is_35bfcee4-c903-4758-b379-2f7b7502a668",
-  "pointRate": 1,
-  "reviewAverage": 4.46,
-  "reviewCount": 90,
-  "fetchedAt": "2026-10-11 06:00"
+  "itemName": "30種類のフレーバーから楽しめる！プロテイン ホエイ 1kg ザプロ ホエイプロテイン ダイエット 女性 男性 プロテインダイエット メロン バナナ ココア ストロベリー ピーチ レモン ヨーグルト 抹茶 マンゴー ミルクティー WPC 武内製薬 THE PROTEIN 送料無料",
+  "price": 5980,
+  "shop": "武内製薬 公式オンラインストア",
+  "url": "https://hb.afl.rakuten.co.jp/hgc/g00tmkpo.ivutkdcb.g00tmkpo.ivutl64f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftakeuchi-labo%2Fta-the-pr%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftakeuchi-labo%2Fi%2F10000074%2F&rafcid=wsc_i_is_35bfcee4-c903-4758-b379-2f7b7502a668",
+  "pointRate": 2,
+  "reviewAverage": 4.58,
+  "reviewCount": 13672,
+  "fetchedAt": "2026-10-11 06:24"
  },
  "catfood": {
-  "itemName": "【月間優良ショップ8回受賞】【クーポン有】 ブリスミックス猫 1kg pHコントロール グレインフリーチキン キャットフード 安全 無添加 食物アレルギー対応 皮膚健康 泌尿器系サポート 高品質たんぱく質 安全フード わんぱく ドライフード 他お試しフードサンプル有 ALE",
-  "price": 3630,
-  "shop": "わんぱく 猫犬用品専門店",
-  "url": "https://hb.afl.rakuten.co.jp/hgc/g00qvxao.ivutk2b2.g00qvxao.ivutlef0/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fwanpaku-izukougen%2Fblcph1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fwanpaku-izukougen%2Fi%2F10008352%2F&rafcid=wsc_i_is_35bfcee4-c903-4758-b379-2f7b7502a668",
-  "pointRate": 5,
-  "reviewAverage": 4.41,
-  "reviewCount": 66,
-  "fetchedAt": "2026-10-11 06:00"
+  "itemName": "tama たまのおねだり プレミアムキャットフード ボナペティ サーモン＆クリル 800g（50g×16袋） 1kg（50g×20袋） 猫 キャットフード ドライ グレインフリー 低カロリー 低リン 腎臓 総合栄養食 成猫 シニア猫 サーモン 魚 ヘアボールケア",
+  "price": 2640,
+  "shop": "tama(たまのおねだり)",
+  "url": "https://hb.afl.rakuten.co.jp/hgc/g00u8buo.ivutk9b4.g00u8buo.ivutl356/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftamaone%2Ftac0100400-50gx20%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftamaone%2Fi%2F10000436%2F&rafcid=wsc_i_is_35bfcee4-c903-4758-b379-2f7b7502a668",
+  "pointRate": 1,
+  "reviewAverage": 4.17,
+  "reviewCount": 29,
+  "fetchedAt": "2026-10-11 06:24"
+ },
+ "diaper": {
+  "itemName": "3回吸収 【速配】 大人用紙おむつ ひまわり にっこりテープMサイズ 《マジックテープタイプ》ケース(合計100枚入[10枚×10袋]) | 大人用オムツ 紙おむつ 紙オムツ おむつ 大人 介護用おむつ 介護用紙おむつ テープ止めタイプ 介護用品",
+  "price": 8140,
+  "shop": "ひまわり(介護用品専門店)",
+  "url": "https://hb.afl.rakuten.co.jp/hgc/g00pve3o.ivutkfa2.g00pve3o.ivutlc30/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhimawari-kaigo%2F10004175%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fhimawari-kaigo%2Fi%2F10004175%2F&rafcid=wsc_i_is_35bfcee4-c903-4758-b379-2f7b7502a668",
+  "pointRate": 1,
+  "reviewAverage": 4.66,
+  "reviewCount": 829,
+  "fetchedAt": "2026-10-11 06:24"
  }
 }

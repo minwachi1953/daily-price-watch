@@ -2,26 +2,37 @@
  "tissue": {
   "itemCode": "cocodecow:10092499",
   "itemName": "クレシア スコッティ ティッシュ 200組 5箱",
-  "approved": false
+  "approved": false,
+  "keyword": "ティッシュペーパー 5箱 200組"
  },
  "water": {
   "itemCode": "p-tano:10257683",
   "itemName": "【6本】伊藤園　磨かれて、澄みきった日本の水　2L　備蓄水　ペットボトル　1ケース（6本）",
-  "approved": false
+  "approved": false,
+  "keyword": "ミネラルウォーター 2L 6本"
  },
  "toilet": {
   "itemCode": "rakuten24:10205904",
   "itemName": "スコッティ フラワーパック 2倍長持ち トイレットペーパー ダブル(50m×12ロール)【スコッティ(SCOTTIE)】[トイレットペーパー]",
-  "approved": false
+  "approved": false,
+  "keyword": "トイレットペーパー 12ロール"
  },
  "protein": {
-  "itemCode": "auc-sheepwing:10002290",
-  "itemName": "SAVE カゼイン&ホエイ ( 1kg / 3kg / 5kg ) カゼイン & ホエイ プロテイン プレーン ノンフレーバー 無添加 スロープロテイン 【レビューを書くと300円 クーポン 配布】",
+  "itemCode": "takeuchi-labo:10000074",
+  "itemName": "30種類のフレーバーから楽しめる！プロテイン ホエイ 1kg ザプロ ホエイプロテイン ダイエット 女性 男性 プロテインダイエット メロン バナナ ココア ストロベリー ピーチ レモン ヨーグルト 抹茶 マンゴー ミルクティー WPC 武内製薬 THE PROTEIN 送料無料",
+  "keyword": "ホエイ プロテイン 1kg",
   "approved": false
  },
  "catfood": {
-  "itemCode": "wanpaku-izukougen:10008352",
-  "itemName": "【月間優良ショップ8回受賞】【クーポン有】 ブリスミックス猫 1kg pHコントロール グレインフリーチキン キャットフード 安全 無添加 食物アレルギー対応 皮膚健康 泌尿器系サポート 高品質たんぱく質 安全フード わんぱく ドライフード 他お試しフードサンプル有 ALE",
+  "itemCode": "tamaone:10000436",
+  "itemName": "tama たまのおねだり プレミアムキャットフード ボナペティ サーモン＆クリル 800g（50g×16袋） 1kg（50g×20袋） 猫 キャットフード ドライ グレインフリー 低カロリー 低リン 腎臓 総合栄養食 成猫 シニア猫 サーモン 魚 ヘアボールケア",
+  "keyword": "キャットフード ドライ 1kg 総合栄養食",
+  "approved": false
+ },
+ "diaper": {
+  "itemCode": "himawari-kaigo:10004175",
+  "itemName": "3回吸収 【速配】 大人用紙おむつ ひまわり にっこりテープMサイズ 《マジックテープタイプ》ケース(合計100枚入[10枚×10袋]) | 大人用オムツ 紙おむつ 紙オムツ おむつ 大人 介護用おむつ 介護用紙おむつ テープ止めタイプ 介護用品",
+  "keyword": "おむつ テープタイプ Mサイズ",
   "approved": false
  }
 }
